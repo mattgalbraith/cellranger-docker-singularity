@@ -14,17 +14,17 @@ Global File Limit: 10k per GB RAM. User Limit: 64 times the number of CPUs.
 See also: https://www.10xgenomics.com/support/software/cell-ranger/latest/tutorials/cr-tutorial-in#sitecheck  
 
 ### Reference data.  
-https://www.10xgenomics.com/support/software/cell-ranger/downloads 
-**Downloads:** 
-Human reference (GRCh38) - 2024-A
+See https://www.10xgenomics.com/support/software/cell-ranger/downloads  
+
+Human reference (GRCh38) - 2024-A:
 ```
 wget "https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2024-A.tar.gz"
 ```
-Mouse reference (GRCm39) - 2024-A
+Mouse reference (GRCm39) - 2024-A:
 ```
 wget "https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCm39-2024-A.tar.gz"
 ```
-Human (GRCh38) and mouse (GRCm39) reference - 2024-A
+Combined Human (GRCh38) and mouse (GRCm39) reference - 2024-A:
 ```
 wget "https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38_and_GRCm39-2024-A.tar.gz"
 ```
@@ -33,8 +33,39 @@ https://www.10xgenomics.com/support/software/cell-ranger/downloads/cr-ref-build-
 
 ### Probe Sets. 
 The Single Cell Fixed RNA Profiling assays use probes targeting protein coding genes in the human or mouse transcriptomes. Each probe consists of a pair of oligonucleotides hybridized to the targeted transcript and are subsequently ligated.  
-Probe Barcode Sequence:
-```wget https://cf.10xgenomics.com/supp/cell-exp/probeset/probe-barcodes-fixed-rna-profiling.txt```
+
+Probe Barcode Sequences:
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/probe-barcodes-fixed-rna-profiling.txt
+```
+
+Human Transcriptome:
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0.1_GRCh38-2020-A.csv
+```
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0_GRCh38-2020-A.bed
+```
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0.1_GRCh38-2020-A.probe_metadata.tsv
+```
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0_GRCh38-2020-A.offtarget.csv
+```
+  
+Mouse Transcriptome:
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A.csv
+```
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.bed
+```
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.probe_metadata.tsv
+```
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.offtarget.csv
+```
 
   
 ## Build docker container:  
