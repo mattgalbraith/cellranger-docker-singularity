@@ -3,9 +3,9 @@ FROM --platform=linux/amd64 ubuntu:24.04 as base
 
 ################## METADATA ######################
 LABEL base_image="ubuntu:24.04"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL software="Cell Ranger"
-LABEL software.version="8.0.1"
+LABEL software.version="9.0.1"
 LABEL about.summary="Cell Ranger is a set of analysis pipelines that perform sample demultiplexing, barcode processing, single cell 3' and 5' gene counting, V(D)J transcript sequence assembly and annotation, and Feature Barcode analysis from 10x Genomics Chromium Single Cell data."
 LABEL about.home="https://www.10xgenomics.com/support/software/cell-ranger/latest/getting-started"
 LABEL about.documentation="https://www.10xgenomics.com/support/software/cell-ranger"
@@ -25,16 +25,15 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-# File size: 702 MB
-# md5sum: 1d08d8005b026fc1ca3c867bc67b2dbd
 
 # NOT USED:
-# RUN wget wget -O cellranger-8.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-8.0.1.tar.gz?Expires=1723610563&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&Signature=U6zxnMjiCZEAB0io3TLdHxgzZ0SWwiDw7C9oUPmw3kN4tdsVWAzLAlF9rEwpG7j8tdqmhk5uMakMjGgCLSIYJOiFgaYa-M7064gWNxr4UNjX63SNo4vhyIflGsxLIAMXKAkjmQVL~RYWdgGsi7g-m5XugTaBCaGrloroi1X5NFIfR5MiKJ2k0~ajTZZHSdM5K-Mc6KSyKASyhq3gc3JPyCvaAM-KEDDLL42~5u9OHZM~9Cj6CQue~ru4VdsrpFgI0inIFAAqNFjQkSwHUDGUHX6HthNF6AJfl2eY1tcEPeX8ptH4IMXbTUy7CiedmXE3qXcbqoZPi1OCbIm9v32Ykw__" && \
-# 	tar -xzvf BBMap_38.90.tar.gz
-
 # Copy from parent dir and unpack downloaded CellRanger archive:
-COPY cellranger-8.0.1.tar.gz /
-RUN tar -xzvf cellranger-8.0.1.tar.gz
+# COPY cellranger-8.0.1.tar.gz /
+# RUN tar -xzvf cellranger-8.0.1.tar.gz
+
+RUN wget -O cellranger-9.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-9.0.1.tar.gz?Expires=1746688909&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&Signature=I7mWgY4dsQOQFvFKGkFyR6BaM7FGiib9Gl-vu7Y6HI~5F8SMIKpNe2RmEVNqcvceSdGKcRmpUi0PPY7j3aYFnEi6d~KrxXA4LjRkWyT4wRwxA1rCYpaRHjT0zH0XlElyIQudErj0Adq9NLA-SamU-SgN3uB0NxAa-QIDAJaMhThZMvLSgndkGeA9Opr3VA5D6ZDFOfiIMl59Gy85pOdTIIh8d0bNA9ARplts62hukbE-YbrlwWDDgyItkGviXKca9eA-94PmtQBrQRNc~YtEoUCAI0TDZD03w40nKuWI3RG8VljwLgdoFnsaBf332FOa3pGlvmoGiZlaQCuEQ7o6Pw__"
+
+RUN tar -xzvf cellranger-9.0.1.tar.gz
 
 
 ################## 2ND STAGE ######################
@@ -47,6 +46,6 @@ ENV DEBIAN_FRONTEND noninteractive
 #     apt-get clean && \
 #     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY --from=base /cellranger-8.0.1/ /opt/cellranger-8.0.1
+COPY --from=base /cellranger-9.0.1/ /opt/cellranger-9.0.1
 
-ENV PATH=/opt/cellranger-8.0.1:$PATH
+ENV PATH=/opt/cellranger-9.0.1:$PATH

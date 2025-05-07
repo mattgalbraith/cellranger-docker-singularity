@@ -14,63 +14,84 @@ Global File Limit: 10k per GB RAM. User Limit: 64 times the number of CPUs.
 See also: https://www.10xgenomics.com/support/software/cell-ranger/latest/tutorials/cr-tutorial-in#sitecheck  
 
 ### Reference data.  
-See https://www.10xgenomics.com/support/software/cell-ranger/downloads  
+See https://www.10xgenomics.com/support/software/cell-ranger/downloads for latest  
+https://www.10xgenomics.com/support/software/cell-ranger/latest/release-notes/cr-reference-release-notes for older  
+Transcriptome reference is optional for Flex analysis in Cell Ranger v9.0  
 
-Human reference (GRCh38) - 2024-A:
+Human GRCh38 (GENCODE v44/Ensembl110) - 2024-A:
 ```
-wget "https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2024-A.tar.gz"
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2024-A.tar.gz
 ```
-Mouse reference (GRCm39) - 2024-A:
+Mouse GRCm39 (GENCODE vM33/Ensembl110) - 2024-A:
 ```
-wget "https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCm39-2024-A.tar.gz"
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCm39-2024-A.tar.gz
 ```
-Combined Human (GRCh38) and mouse (GRCm39) reference - 2024-A:
+Human GRCh38 (GENCODE v32/Ensembl98) - 2020-A:
 ```
-wget "https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38_and_GRCm39-2024-A.tar.gz"
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
 ```
+Mouse mm10 (GENCODE vM23/Ensembl98) - 2020-A:
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz
+```
+
 **For purposes of reproducibility, the exact build steps are provided here:**  
 https://www.10xgenomics.com/support/software/cell-ranger/downloads/cr-ref-build-steps  
 
 ### Probe Sets. 
-The Single Cell Fixed RNA Profiling assays use probes targeting protein coding genes in the human or mouse transcriptomes. Each probe consists of a pair of oligonucleotides hybridized to the targeted transcript and are subsequently ligated.  
+The Single Cell Flex Fixed RNA Profiling assays use probes targeting protein coding genes in the human or mouse transcriptomes. Each probe consists of a pair of oligonucleotides hybridized to the targeted transcript and are subsequently ligated.  
+Not all probe sets are compatible with every transcriptome reference. Compatibility depends on the version of Cell Ranger you are using.  
+See compatibility table [here](https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-probe-sets-overview). 
 
 Probe Barcode Sequences:
 ```
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/probe-barcodes-fixed-rna-profiling.txt
 ```
 
-Human Transcriptome:
+Human Transcriptome Probe Sets v1.1 (compatible with Cell Ranger Version v9.0):  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-human-transcriptome-probe-set-1-1  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-probe-set-files#download-probe-files  
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.1.0_GRCh38-2024-A.csv
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.1.0_GRCh38-2024-A.probe_metadata.tsv
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.1.0_GRCh38-2024-A.bed
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.1.0_GRCh38-2024-A.offtarget.csv
+```
+
+Human Transcriptome Probe Sets v1.0.1 (compatible with Cell Ranger Version v8.0):  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-human-transcriptome-probe-set  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-probe-set-files#download-probe-files  
 ```
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0.1_GRCh38-2020-A.csv
-```
-```
-wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0_GRCh38-2020-A.bed
-```
-```
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0.1_GRCh38-2020-A.probe_metadata.tsv
-```
-```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0_GRCh38-2020-A.bed
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Human_Transcriptome_Probe_Set_v1.0_GRCh38-2020-A.offtarget.csv
 ```
+
+Mouse Transcriptome Probe Sets v1.1.1 (compatible with Cell Ranger Version v9.0??):  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-mouse-transcriptome-probe-set-1-1  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-probe-set-files#download-probe-files  
+```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.1.1_GRCm39-2024-A.csv
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.1.1_GRCm39-2024-A.probe_metadata.tsv
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.1.1_GRCm39-2024-A.bed
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.1.1_GRCm39-2024-A.offtarget.csv
+```
   
-Mouse Transcriptome:
+Mouse Transcriptome Probe Sets v1.0.1 (compatible with Cell Ranger Version v8.0):  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-mouse-transcriptome-probe-set  
+https://www.10xgenomics.com/support/flex-gene-expression/documentation/steps/probe-sets/chromium-frp-probe-set-files#download-probe-files  
 ```
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A.csv
-```
-```
-wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.bed
-```
-```
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.probe_metadata.tsv
-```
-```
+wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.bed
 wget https://cf.10xgenomics.com/supp/cell-exp/probeset/Chromium_Mouse_Transcriptome_Probe_Set_v1.0_mm10-2020-A.offtarget.csv
 ```
 
   
 ## Build docker container:  
 
-### 1. For TOOL installation instructions:  
+### 1. For Cellranger installation instructions:  
 https://www.10xgenomics.com/support/software/cell-ranger/latest/tutorials/cr-tutorial-in    
 
 
@@ -79,13 +100,13 @@ https://www.10xgenomics.com/support/software/cell-ranger/latest/tutorials/cr-tut
 #### To build image from the command line:  
 ``` bash
 # Assumes current working directory is the top-level cellranger-docker-singularity directory
-docker build -t cellranger:8.0.1 . # tag should match software version
+docker build -t cellranger:9.0.1 . # tag should match software version
 ```
 * Can do this on [Google shell](https://shell.cloud.google.com)
 
 #### To test this tool from the command line:
 ``` bash
-docker run --rm -it cellranger:8.0.1 cellranger --help # should print help information
+docker run --rm -it cellranger:9.0.1 cellranger --help # should print help information
 
 # Optional: Run a sitecheck and perform a testrun
 cellranger sitecheck > cellranger_sitecheck.txt # see Requirements section above
@@ -101,17 +122,17 @@ https://github.com/mattgalbraith/singularity-docker
 ### 4. Save Docker image as tar and convert to sif (using singularity run from Docker container)  
 ``` bash
 docker images
-docker save <Image_ID> -o cellranger_8.0.1-docker.tar && gzip cellranger_8.0.1-docker.tar # = IMAGE_ID of <tool> image
-docker run -v "$PWD":/data --rm -it singularity:1.3.2 bash -c "singularity build /data/cellranger_8.0.1.sif docker-archive:///data/cellranger_8.0.1-docker.tar.gz"
+docker save <Image_ID> -o cellranger_9.0.1-docker.tar && gzip cellranger_9.0.1-docker.tar # = IMAGE_ID of <tool> image
+docker run -v "$PWD":/data --rm -it singularity:1.3.4 bash -c "singularity build /data/cellranger_9.0.1.sif docker-archive:///data/cellranger_9.0.1-docker.tar.gz"
 ```
 NB: On Apple M1/M2 machines ensure Singularity image is built with x86_64 architecture or sif may get built with arm64  
 
-Next, transfer the cellranger_8.0.1.sif file to the system on which you want to run Cell Ranger from the Singularity container  
+Next, transfer the cellranger_9.0.1.sif file to the system on which you want to run Cell Ranger from the Singularity container  
 
 ### 5. Test singularity container on (HPC) system with Singularity/Apptainer available  
 ``` bash
 # set up path to the Singularity container
-CELLRANGER_SIF=path/to/cellranger_8.0.1.sif
+CELLRANGER_SIF=path/to/cellranger_9.0.1.sif
 
 # Test that Cell Ranger can run from Singularity container
 singularity run $CELLRANGER_SIF cellranger --help # depending on system/version, singularity may be called apptainer
